@@ -1,7 +1,7 @@
 import { app } from "./app.js";
 import http from "http";
 import { Server as socketio } from "socket.io";
-import { createClient } from "redis";
+import Redis from "ioredis";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Message } from "./models/Message.models.js";
@@ -17,19 +17,10 @@ const io = new socketio(server, {
   },
 });
 
-// Redis Connection with Error Handling
-const redisClient = createClient({
-  url: "redis://127.0.0.1:6379",
-});
-
-redisClient.on("error", (err) => console.log("Redis Error:", err));
-
-try {
-  await redisClient.connect();
-  console.log("Redis Connected Successfully");
-} catch (error) {
-  console.error("Redis Connection Failed:", error);
-}
+const redisClient = new Redis(process.env.REDIS_URL,{
+  password:process.env.REDIS_TOKEN,
+  tls:{}
+})
 
 io.on("connection", (socket) => {
   socket.on("new-user-joined", async (userId) => {
