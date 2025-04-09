@@ -36,7 +36,7 @@ const Search = ({ userId, userName }) => {
     setTimeout(async () => {
       try {
         const response = await axios.get(
-          `/api/v1/users/userList?userId=${userId}`
+          `/userList?userId=${userId}`
         );
         if (response.data) {
           const updatedData = response.data.map((data) => ({
@@ -63,7 +63,7 @@ const Search = ({ userId, userName }) => {
 
     try {
       const response = await axios.get(
-        `/api/v1/users/searchUser?query=${searchText}&userId=${userId}`
+        `/searchUser?query=${searchText}&userId=${userId}`
       );
       const usersWithUUID = response.data.map((user) => ({
         ...user,
