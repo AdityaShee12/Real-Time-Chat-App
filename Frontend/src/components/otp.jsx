@@ -48,8 +48,7 @@ const Otp = () => {
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
       <button onClick={sendOtp}>Send OTP</button>
-
-      {/* OTP ফিল্ড এবং Next বাটন কেবল তখনই দেখাবে যখন OTP পাঠানো হয়েছে */}
+      
       {otpSent && (
         <>
           <input
