@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const server = http.createServer(app);
 const io = new socketio(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://real-time-chat-app-eight-delta.vercel.app/",
     methods: ["GET", "POST"],
     credentials: true,
   },
