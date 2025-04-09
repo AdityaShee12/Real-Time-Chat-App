@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axiosInstance.js"
 
 // Register a new user
 export const registerUser = async (formData) => {
@@ -7,13 +7,13 @@ export const registerUser = async (formData) => {
       "Content-Type": "multipart/form-data",
     },
   };
-  const response = await axios.post("/api/v1/users/register", formData, config);
+  const response = await axios.post("/register", formData, config);
   return response.data;
 };
 
 // Login a user
 export const loginUser = async (credentials) => {
-  const response = await axios.post("/api/v1/users/login", credentials, {
+  const response = await axios.post("/login", credentials, {
     withCredentials: true,
   });
   return response.data;
@@ -22,7 +22,7 @@ export const loginUser = async (credentials) => {
 // Logout the user
 export const logoutUser = async () => {
   const response = await axios.post(
-    "/api/v1/users/logout",
+    "/logout",
     {},
     {
       withCredentials: true,
@@ -34,7 +34,7 @@ export const logoutUser = async () => {
 // Refresh the access token
 export const refreshAccessToken = async () => {
   const response = await axios.post(
-    "/api/v1/users/refresh-token",
+    "/refresh-token",
     {},
     {
       withCredentials: true,

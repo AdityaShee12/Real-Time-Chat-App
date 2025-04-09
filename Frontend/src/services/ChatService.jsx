@@ -6,13 +6,6 @@ import { FiSend, FiPaperclip, FiX } from "react-icons/fi";
 import { v4 as uuidv4 } from "uuid";
 import { FiCopy, FiTrash2, FiStar } from "react-icons/fi"; // Import icons
 
-const configuration = {
-  iceServers: [
-    { urls: "stun:stun.l.google.com:19302" },
-    { urls: "stun:stun1.l.google.com:19302" },
-  ],
-};
-
 const ChatPage = () => {
   const [state, setState] = useState("offline");
   const [message, setMessage] = useState("");
