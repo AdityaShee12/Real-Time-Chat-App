@@ -65,10 +65,8 @@ const Sign_up = () => {
     formData.append("about", about);
     if (avatar) formData.append("avatar", avatar);
     try {
-      console.log("Form Data", [...formData]);
-      console.log(email);
       const response = await registerUser(formData);
-      console.log(response);
+     
       const userName = response.data.fullName;
       const userId = response.data._id;
       navigate("/layout", { state: { userId, userName } });
