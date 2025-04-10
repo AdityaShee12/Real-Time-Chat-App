@@ -1,7 +1,8 @@
 import { app } from "./app.js";
 import http from "http";
 import { Server as socketio } from "socket.io";
-import Redis from "ioredis";
+// import Redis from "ioredis";
+import { createClient } from "redis";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Message } from "./models/Message.models.js";
@@ -17,11 +18,14 @@ const io = new socketio(server, {
   },
 });
 
-const redisClient = new Redis(process.env.REDIS_URL,{
-  password:process.env.REDIS_TOKEN,
-  tls:{}
-})
+// const redisClient = new Redis(process.env.REDIS_URL,{
+//   password:process.env.REDIS_TOKEN,
+//   tls:{}
+// })
 
+const redisClient = createClient({
+  url: "redis://127.0.0.1:6379",
+});
 io.on("connection", (socket) => {
   socket.on("new-user-joined", async (userId) => {
     let socketID;
