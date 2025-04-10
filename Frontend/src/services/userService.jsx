@@ -13,7 +13,7 @@ export const registerUser = async (formData) => {
 
 // Login a user
 export const loginUser = async (credentials) => {
-  const response = await axios.post("/login", credentials, {
+  const response = await axios.post("https://real-time-chat-app-3-axa5.onrender.com/api/v1/users/login", credentials, {
     withCredentials: true,
   });
   return response.data;
