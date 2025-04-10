@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/userService";
 
@@ -28,7 +28,7 @@ const Sign_up = () => {
 
   const sendOtp = async () => {
     try {
-      const response = await axios.post("/otp", { email });
+      const response = await axios.post("https://real-time-chat-app-3-axa5.onrender.com/api/v1/users/otp", { email });
       console.log(response);
       console.log(response.data.data.email);
       console.log(response.data.data.otp);
