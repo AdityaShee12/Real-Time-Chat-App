@@ -1,4 +1,4 @@
-import axios from "../axiosInstance.js"
+import axios from "axios";
 
 // Register a new user
 export const registerUser = async (formData) => {
@@ -7,22 +7,30 @@ export const registerUser = async (formData) => {
       "Content-Type": "multipart/form-data",
     },
   };
-  const response = await axios.post("/register", formData, config);
+  const response = await axios.post(
+    "https://real-time-chat-app-3-axa5.onrender.com/api/v1/users/register",
+    formData,
+    config
+  );
   return response.data;
 };
 
 // Login a user
 export const loginUser = async (credentials) => {
-  const response = await axios.post("https://real-time-chat-app-3-axa5.onrender.com/api/v1/users/login", credentials, {
-    withCredentials: true,
-  });
+  const response = await axios.post(
+    "https://real-time-chat-app-3-axa5.onrender.com/api/v1/users/login",
+    credentials,
+    {
+      withCredentials: true,
+    }
+  );
   return response.data;
 };
 
 // Logout the user
 export const logoutUser = async () => {
   const response = await axios.post(
-    "/logout",
+    "https://real-time-chat-app-3-axa5.onrender.com/api/v1/users/logout",
     {},
     {
       withCredentials: true,
